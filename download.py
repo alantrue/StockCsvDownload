@@ -7,7 +7,15 @@ import datetime
 
 from datetime import date, timedelta
 
-end = datetime.date(2004, 2, 10)
+os.chdir("E:\\StockData")
+files = os.listdir("E:\\StockData")
+
+if len(files) == 0:
+    end = datetime.date(2004, 2, 10)
+else:
+    lastFile = files[-1]
+    end = datetime.date(int(lastFile[0:4]),int(lastFile[4:6]), int(lastFile[6:8]))
+
 delta = date.today() - end
 
 for i in range(delta.days):
